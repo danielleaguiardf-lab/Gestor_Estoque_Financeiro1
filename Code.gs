@@ -15,7 +15,7 @@
 
 // 1) TROQUE a chave abaixo por uma senha só sua (letras e números, sem espaços).
 //    Você vai digitar essa mesma chave no app, em Ajustes → Conectar ao Google Planilhas.
-const CHAVE = 'TROQUE-ESTA-CHAVE';
+const CHAVE = 'Lojalimpeza789';
 
 const FORMATOS = {
   text: '@',
@@ -90,7 +90,7 @@ function responder(fn) {
 }
 
 function verificar(chave) {
-  if (!CHAVE || CHAVE === 'TROQUE-ESTA-CHAVE') {
+  if (!CHAVE || CHAVE === 'Lojalimpeza789') {
     throw new Error('Defina a CHAVE no código do Apps Script e publique uma nova versão.');
   }
   if (chave !== CHAVE) throw new Error('Chave de acesso inválida.');

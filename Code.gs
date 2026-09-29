@@ -15,7 +15,7 @@
 
 // 1) TROQUE a chave abaixo por uma senha só sua (letras e números, sem espaços).
 //    Você vai digitar essa mesma chave no app, em Ajustes → Conectar ao Google Planilhas.
-const CHAVE = 'Lojalimpeza789';
+const CHAVE = 'TROQUE-ESTA-CHAVE';
 
 const FORMATOS = {
   text: '@',
@@ -234,8 +234,38 @@ function cabecalho(nome) {
   return cacheCab[nome];
 }
 
+/**
+ * Planilhas em português (e outros idiomas que usam vírgula nos decimais)
+ * separam os argumentos das fórmulas com ponto e vírgula.
+ */
+let usaPontoVirgula = null;
+function separadorPontoVirgula() {
+  if (usaPontoVirgula === null) {
+    const loc = String(SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetLocale() || 'en_US');
+    const ponto = /^(en|ja|zh|ko|th|he|iw|hi|ms|fil|ga|sw|es_MX|es_US|es_419|es_PR|es_DO|es_GT|es_HN|es_NI|es_PA|es_SV)/;
+    usaPontoVirgula = !ponto.test(loc);
+  }
+  return usaPontoVirgula;
+}
+
 /** Troca {coluna} pela célula da mesma linha e {Aba.coluna} pela coluna inteira da outra aba. */
 function resolver(modelo, t, linha) {
+  const f = resolverRefs(modelo, t, linha);
+  return separadorPontoVirgula() ? trocarSeparador(f) : f;
+}
+
+/** Troca as vírgulas que separam argumentos por ponto e vírgula, sem mexer em textos entre aspas. */
+function trocarSeparador(f) {
+  let dentro = false, out = '';
+  for (let i = 0; i < f.length; i++) {
+    const c = f[i];
+    if (c === '"') dentro = !dentro;
+    out += (c === ',' && !dentro) ? ';' : c;
+  }
+  return out;
+}
+
+function resolverRefs(modelo, t, linha) {
   return modelo
     .replace(/\{([A-Za-z_]+)\.([a-z_]+)\}/g, function (_, aba, col) {
       const j = cabecalho(aba).indexOf(col);

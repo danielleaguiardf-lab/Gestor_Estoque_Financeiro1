@@ -15,7 +15,7 @@
 
 // 1) TROQUE a chave abaixo por uma senha só sua (letras e números, sem espaços).
 //    Você vai digitar essa mesma chave no app, em Ajustes → Conectar ao Google Planilhas.
-const CHAVE = 'TROQUE-ESTA-CHAVE';
+const CHAVE = 'Lojalimpeza789';
 
 const FORMATOS = {
   text: '@',

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Sistema de gestão para pequena loja de produtos de limpeza: estoque, vendas, fiado, clientes, despesas, investimentos, fluxo de caixa e lucro.">
+<title>Gestão da Loja de Limpeza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand">
+      <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3l2 3v11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V9l2-3z"/><path d="M7 13h10"/></svg></div>
+      <div><b id="storeName">Minha Loja</b><small>Produtos de limpeza</small></div>
+    </div>
+    <nav class="navwrap" id="nav"></nav>
+    <div class="saving" id="saveState"></div>
+  </aside>
+  <main id="main"><div class="empty">Carregando…</div></main>
+</div>
+<div id="modalRoot"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
